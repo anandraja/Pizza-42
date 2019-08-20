@@ -1,0 +1,24 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    flex-grow:1;
+}
+
+.whole-row {
+    display: flex;
+    flex-direction: row;
+    flex: 0 0 1;
+}
+
+.whole-column {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.title {
+  font-weight: 800;
+  text-align: center;
+  top: 32px;
+  position: relative;
+}

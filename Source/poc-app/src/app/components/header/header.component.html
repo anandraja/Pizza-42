@@ -1,0 +1,17 @@
+<mat-toolbar style="background-color: brown;">
+  <div style="display: flex; flex-direction:row; height:32px; flex-grow:1;">
+    <div style="display: flex; flex-direction:column; height:32px; width: auto;">
+      <div class="menu-item mat-title" color="primary" routerLink="/" routerLinkActive="active">Home</div>
+    </div>
+    <!-- This fills the remaining space of the current row -->
+    <!-- <span class="example-fill-remaining-space"></span> -->
+    <div style="display: flex; flex-direction:row; height:32px; flex-grow:1; justify-content: flex-end;">
+      <div  class="menu-item mat-title" mat-button (click)="auth.login()" *ngIf="!auth.loggedIn">Login</div>
+      <div  class="menu-item mat-title" routerLink="/contact" routerLinkActive="active" *ngIf="!auth.loggedIn">Contact</div>
+      <div  class="menu-item mat-title" routerLink="/external-api" routerLinkActive="active" *ngIf="auth.loggedIn">Orders</div>
+      <div  class="menu-item mat-title" routerLink="/profile" routerLinkActive="active" *ngIf="auth.loggedIn">Profile</div>
+      <div  class="menu-item mat-title" routerLink="/connections" routerLinkActive="active" *ngIf="auth.loggedIn">Connections</div>
+      <div class="menu-item mat-title" mat-button (click)="auth.logout()" *ngIf="auth.loggedIn">Logout</div>
+    </div>
+  </div>
+</mat-toolbar>

@@ -1,0 +1,51 @@
+<div class="whole-column" >
+  <div *ngIf="!auth.loggedIn" class="whole-column" style="position: relative;">
+    <div style="position: absolute; height: 100%; width: 100%;">
+      <div class="mat-display-3 title">Pizza-42</div>
+    </div>
+    <img src="../../../assets/images/CheesyBite2019_SK_Desktop_730x320.jpg"  style="width: 100%; height:100%;"/>
+  </div>
+  <div *ngIf="auth.loggedIn" class="whole-column">
+      <div *ngIf="auth.userProfile$ | async as profile" class="whole-column">
+        <div *ngIf="profile.email_verified" class="whole-column">
+            <div class="verified-screen" class="whole-column" style="align-items:center; justify-content: center;">
+              <h1 class="mat-display-1" style="margin: 0 16px 0 8px;">Are you ready to place order?</h1>
+              <h2 class="mat-title">Click <a href="#">here</a> to see all choices...</h2>
+              <img src="../../../assets/images/ready-to-order.jpg"  style="height: 480px; width:480px;"/>
+            </div>
+        </div>
+        <div *ngIf="!profile.email_verified" class="whole-column">
+          <div class="whole-column">
+            <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                <div class="mat-display-1" style="margin: 0; font-weight:500; color: mediumblue;">Please verify email</div>
+                <div class="mat-display-1" >Until then, you can only browse the menu</div>
+            </div>
+            <div class="whole-row">
+              <div style="display: flex; flex-direction: row; flex: 100%; justify-content: center; align-items: flex-end;">
+                <div style="margin: 8px; position: relative;">
+                  <button mat-flat-button color="warn" style="position: absolute; top: 8px; left: 8px; font-size: 24px;">Slices</button>
+                  <img src="../../../assets/images/pizza-slice.jpg"  style="width: 400px; height: 320px; cursor: pointer;"/>
+                </div>
+                <div style="margin: 8px; position: relative;">
+                  <button mat-flat-button color="warn" style="position: absolute; top: 8px; left: 8px; font-size: 24px;">Whole Pizza</button>
+                  <img src="../../../assets/images/whole-pizza.jpg"  style="width: 400px; height: 320px; cursor: pointer;"/>
+                </div>
+              </div>
+            </div>
+            <div class="whole-row">
+                  <div style="display: flex; flex-direction: row; flex: 60%; justify-content: center; align-items: flex-start;">
+                    <div style="margin: 8px; position: relative;">
+                      <button mat-flat-button color="warn" style="position: absolute; top: 8px; left: 8px; font-size: 24px;">For Party</button>
+                      <img src="../../../assets/images/party.jpg"  style="width: 400px; height: 320px; cursor: pointer;"/>
+                    </div>
+                    <div style="margin: 8px; position: relative;">
+                      <button mat-flat-button color="warn" style="position: absolute; top: 8px; left: 8px; font-size: 24px;">Delivery</button>
+                      <img src="../../../assets/images/delivery.jpg"  style="width: 400px; height: 320px; cursor: pointer;"/>
+                    </div>
+                  </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+:host {
+    display: flex; 
+    flex-direction: row; 
+}
+
+.menu-item {
+    margin: 0 8px 0 8px;
+    cursor: pointer;
+    color: azure;
+}

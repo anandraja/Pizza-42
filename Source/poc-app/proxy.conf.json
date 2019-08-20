@@ -1,0 +1,6 @@
+{
+  "/api": {
+    "target": "https://pizza42api.azurewebsites.net",
+    "secure": false
+  }
+}
