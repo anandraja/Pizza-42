@@ -19,9 +19,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { RouterModule } from '../../node_modules/@angular/router';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { routes } from './app-routing.module';
-import { ConnectionsComponent } from './components/connections/connections.component';
 import { ExternalApiComponent } from './components/external-api/external-api.component';
-// import { OrdersComponent } from './components/orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -33,9 +31,7 @@ import { ExternalApiComponent } from './components/external-api/external-api.com
     CallbackComponent,
     ProfileComponent,
     PageNotFoundComponent,
-    ConnectionsComponent,
-    ExternalApiComponent,
-    // OrdersComponent
+    ExternalApiComponent
   ],
   imports: [
     BrowserModule,

@@ -10,7 +10,8 @@
       <div  class="menu-item mat-title" routerLink="/contact" routerLinkActive="active" *ngIf="!auth.loggedIn">Contact</div>
       <div  class="menu-item mat-title" routerLink="/external-api" routerLinkActive="active" *ngIf="auth.loggedIn">Orders</div>
       <div  class="menu-item mat-title" routerLink="/profile" routerLinkActive="active" *ngIf="auth.loggedIn">Profile</div>
-      <div  class="menu-item mat-title" routerLink="/connections" routerLinkActive="active" *ngIf="auth.loggedIn">Connections</div>
+      <!-- <div  class="menu-item mat-title" routerLink="/connections" routerLinkActive="active" *ngIf="auth.loggedIn">Connections</div> -->
+      <button mat-button class="menu-item mat-title" (click)="getConnections()">Fun Facts</button>
       <div class="menu-item mat-title" mat-button (click)="auth.logout()" *ngIf="auth.loggedIn">Logout</div>
     </div>
   </div>

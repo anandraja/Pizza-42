@@ -5,7 +5,6 @@ import { ContactComponent } from './components/contact/contact.component';
 import { CallbackComponent } from './components/callback/callback.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { ConnectionsComponent } from './components/connections/connections.component';
 import { ExternalApiComponent } from './components/external-api/external-api.component';
 import { AuthGuard } from './auth.guard';
 
@@ -29,11 +28,6 @@ export const routes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'connections',
-    component: ConnectionsComponent,
     canActivate: [AuthGuard]
   },
   {

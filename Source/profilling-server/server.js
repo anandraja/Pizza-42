@@ -1,15 +1,7 @@
 'use latest';
 
-// import express from 'express';
-// import { fromExpress } from 'webtask-tools';
-// import bodyParser from 'body-parser';
-// import cookieSession from 'cookie-session';
-// import csurf from 'csurf';
-// import moment from 'moment';
-// import jwt from 'jsonwebtoken';
-// import ejs from 'ejs';
-// import _ from 'lodash';
-
+const fs = require('fs');
+const readline = require('readline');
 const express = require('express');
 //const fromExpress = require('webtask-tools');
 const bodyParser = require('body-parser');
@@ -18,6 +10,7 @@ const csurf = require('csurf');
 const jwt = require('jsonwebtoken');
 const ejs = require('ejs');
 var _ = require('lodash');
+var totalConnections = require('./connections');
 var port = process.env.port || 8080;
 
 const app = express();
@@ -34,12 +27,55 @@ const AUTH0_AUDIENCE = 'https://pizza42/rules';
 const TOKEN_SECRET = 'pizza42';
 
 const csrfProtection = csurf();
+const parseBody = bodyParser.urlencoded({ extended: false });
 
 app.get('/checkserver', (req, res) => {
   res.json({
     message: 'This API is working...'
   });
 });
+
+app.get('/connections', verifyInputToken, csrfProtection, (req, res) => {
+
+  // get required fields from JWT passed from Auth0 rule
+  const requiredFields = req.tokenPayload[`${AUTH0_DOMAIN}/claims/required_fields`];
+  // store data in session that needs to survive the POST
+  req.session.subject = req.tokenPayload.sub;
+  req.session.requiredFields = requiredFields;
+  req.session.state = req.query.state;
+
+  // render the form
+  const data = { 
+    subject: req.tokenPayload.sub,
+    csrfToken: req.csrfToken(),
+    fields: {},
+    action: req.originalUrl.split('?')[0]
+  };
+  requiredFields.forEach((field) => {
+    data.fields[field.name] = {value: field.value};
+  });
+
+  const html = totalConnections.show(data);
+
+  res.set('Content-Type', 'text/html');
+  res.status(200).send(html);
+});
+
+app.post('/connections', parseBody, csrfProtection, (req, res) => {
+  // render form that auth-posts back to Auth0 with collected data
+  const formData = _.omit(req.body, '_csrf');
+  const HTML = renderReturnView({
+    action: `${AUTH0_DOMAIN}continue?state=${req.session.state}`,
+    formData
+  });
+
+  // clear session
+  req.session = null;
+
+  res.set('Content-Type', 'text/html');
+  res.status(200).send(HTML);
+});
+
 
 app.get('/', verifyInputToken, csrfProtection, (req, res) => {
   // get required fields from JWT passed from Auth0 rule
@@ -66,7 +102,7 @@ app.get('/', verifyInputToken, csrfProtection, (req, res) => {
   res.status(200).send(html);
 });
 
-const parseBody = bodyParser.urlencoded({ extended: false });
+
 
 app.post('/', parseBody, csrfProtection, validateForm, (req, res) => {
   if (req.invalidFields.length > 0) {

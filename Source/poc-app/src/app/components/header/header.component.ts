@@ -13,4 +13,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
+  getConnections() {
+    window.location.href = window.location.origin + '/assets/connections/index.html';
+  }
 }

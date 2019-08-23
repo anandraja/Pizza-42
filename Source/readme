@@ -1,0 +1,42 @@
+API KEY - AIzaSyC4YgyQPdiaNOHpBlW7u_5Y9FNk0Bdn-SU
+
+
+Accessing People API:
+Reference: https://developers.google.com/people/quickstart/js
+
+Progressive Profiling:
+Reference:
+https://auth0.com/docs/rules/guides/redirect#how-to-securely-process-results
+https://auth0.com/docs/rules/guides/redirect
+https://auth0.com/docs/users/concepts/overview-progressive-profiling
+https://github.com/auth0/rules/tree/master/redirect-rules/progressive-profiling
+https://auth0.com/docs/rules/guides/configuration
+
+
+Rules Configuration:
+TOKEN_ISSUER: https://dev--pizza42.auth0.com/
+TOKEN_AUDIENCE: https://pizza42/rules
+TOKEN_SECRET: pizza42
+
+Sample: https://github.com/auth0/rules/tree/master/redirect-rules/progressive-profiling
+
+
+Another approach for Progressive Profiling:
+https://thewebsmithsite.wordpress.com/2019/04/17/a-javascript-widget-for-progressive-profiling-with-auth0-api/
+
+
+Google Account:
+Pizza422019@gmail.com
+Pizza4@us
+
+Auth0 Credentials
+Pizza422019@gmail.com
+Pizza4@us
+Tenant-Domain: dev--pizza42.auth0.com
+
+
+Google People API
+Client ID: 598011401638-em45ucf0fpg02htkavsa0h99fq16u70r.apps.googleusercontent.com
+Client Secret: EVaXhRgZAHejl3DsYrtilNSy
+API Key: AIzaSyCNRVdnDEAGdYzkUTbuQWynmdT8AFZVUUU
+
